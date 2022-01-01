@@ -1,6 +1,6 @@
 {
     "name": "theothernic/weather-service",
-    "description": "Pull weather data.",
+    "description": "Pull weather data using various sources, mainly NOAA.",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -15,5 +15,14 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {}
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:bearlovescode/common.git"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "bearlovescode/common": "dev-master"
+    }
 }
