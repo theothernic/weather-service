@@ -9,7 +9,6 @@
         public function __construct(mixed $data = null)
         {
             $this->using(['title', 'features']);
-
             parent::__construct($data);
         }
     }
