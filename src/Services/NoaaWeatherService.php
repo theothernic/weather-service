@@ -37,11 +37,10 @@
          */
         public function getActiveAlerts(string $area = null) : null|object
         {
-            if (empty($zone))
+            if (empty($area))
                 return null;
 
             $alertData = $this->client->getActiveAlerts($area);
-
 
             return new Model($alertData);
         }
