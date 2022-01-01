@@ -33,15 +33,21 @@
 
         /**
          * @param string|null $area the forecast zone or county code.
-         * @return object|null
+         * @return array|null
+         * @throws \GuzzleHttp\Exception\GuzzleException
+         * @throws \Theothernic\WeatherService\Exceptions\WeatherClientException
          */
-        public function getActiveAlerts(string $area = null) : null|object
+        public function getActiveAlerts(string $area = null) : array|null
         {
             if (empty($area))
                 return null;
 
-            $alertData = $this->client->getActiveAlerts($area);
+            $alertList = [];
+            $alertData = json_encode($this->client->getActiveAlerts($area));
 
-            return new Model($alertData);
+            foreach ($alertData as $alert)
+                $alertList[] = $alert;
+
+            return $alertList;
         }
     }
