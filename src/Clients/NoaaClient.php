@@ -8,16 +8,21 @@
     class NoaaClient extends WeatherClient
     {
         /**
-         * @param string|null $area
+         * @param string|null $id Zone identifier.
+         * @param string $type  Zone type. One of 'area', 'zone'
          * @return object|null
-         * @throws GuzzleException|WeatherClientException
+         * @throws GuzzleException
+         * @throws WeatherClientException
          */
-        public function getActiveAlerts(string $area = null) : mixed
+        public function getActiveAlerts(string $id = null, string $type = 'zone') : mixed
         {
-            if (empty($area))
+            if (!in_array($type, ['area', 'zone']))
                 return null;
 
-            $uri = sprintf('/alerts/active?area=%s', $area);
+            if (empty($id))
+                return null;
+
+            $uri = sprintf('/alerts/active?%s=%s', $type, $id);
 
             $req = new Request('GET', $uri);
             $resp = parent::go($req);
