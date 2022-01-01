@@ -1,0 +1,19 @@
+{
+    "name": "theothernic/weather-service",
+    "description": "Pull weather data.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Theothernic\\WeatherService\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nic Barr",
+            "email": "github@nbarr.net"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
