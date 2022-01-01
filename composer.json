@@ -23,6 +23,14 @@
     ],
     "require": {
         "php": "^8.0",
-        "bearlovescode/common": "dev-master"
+        "bearlovescode/common": "dev-master",
+        "illuminate/support": "^8.77"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Theothernic\\WeatherService\\Laravel\\Providers\\WeatherServiceProvider"
+            ]
+        }
     }
 }
