@@ -17,7 +17,7 @@
             if (empty($area))
                 return null;
 
-            $uri = sprintf('/alerts/active/area?=%s', $area);
+            $uri = sprintf('/alerts/active?area=%s', $area);
 
             $req = new Request('GET', $uri);
             $resp = parent::go($req);

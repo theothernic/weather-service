@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5184d701f582f11f6674394cbfd8f9d9",
+    "content-hash": "43071f0df5bb2247563b6f04872a0a80",
     "packages": [
         {
             "name": "bearlovescode/common",
