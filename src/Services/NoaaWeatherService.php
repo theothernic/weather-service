@@ -50,7 +50,7 @@
             return $this->prepareAlerts($alertData);
         }
 
-        public function getForecastForCoords(Point $coords)
+        public function getForecastForCoords(Point $coords) : NoaaForecast
         {
             $forecast = json_decode($this->client->getForecastForCoords($coords));
             return new NoaaForecast($forecast->properties);

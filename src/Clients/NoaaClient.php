@@ -57,7 +57,7 @@
          */
         public function getForecastForCoords(Point $coords): object|null
         {
-            $metadata = $this->getPointInfo($coords);
+            $metadata = json_decode($this->getPointInfo($coords));
 
             if ($metadata)
             {
