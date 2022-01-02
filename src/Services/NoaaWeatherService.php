@@ -7,8 +7,10 @@
     use Theothernic\WeatherService\Clients\NoaaClient;
     use Theothernic\WeatherService\Clients\WeatherClient;
     use Theothernic\WeatherService\Models\Configuration\WeatherConfiguration;
+    use Theothernic\WeatherService\Models\Noaa\NoaaForecast;
     use Theothernic\WeatherService\Models\Noaa\WeatherAlert;
     use Theothernic\WeatherService\Models\Noaa\WeatherAlertCollection;
+    use Theothernic\WeatherService\Models\Point;
 
     class NoaaWeatherService
     {
@@ -46,6 +48,12 @@
 
             $alertData = json_decode($this->client->getActiveAlerts($area));
             return $this->prepareAlerts($alertData);
+        }
+
+        public function getForecastForCoords(Point $coords)
+        {
+            $forecast = json_decode($this->client->getForecastForCoords($coords));
+            return new NoaaForecast($forecast->properties);
         }
 
 
