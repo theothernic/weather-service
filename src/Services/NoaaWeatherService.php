@@ -7,6 +7,8 @@
     use Theothernic\WeatherService\Clients\NoaaClient;
     use Theothernic\WeatherService\Clients\WeatherClient;
     use Theothernic\WeatherService\Models\Configuration\WeatherConfiguration;
+    use Theothernic\WeatherService\Models\Noaa\WeatherAlert;
+    use Theothernic\WeatherService\Models\Noaa\WeatherAlertFeatureCollection;
 
     class NoaaWeatherService
     {
@@ -43,11 +45,22 @@
                 return null;
 
             $alertList = [];
-            $alertData = json_encode($this->client->getActiveAlerts($area));
+            $alertData = json_decode($this->client->getActiveAlerts($area));
+            return $this->hydrateAlerts($alertData);
+        }
 
-            foreach ($alertData as $alert)
-                $alertList[] = $alert;
 
-            return $alertList;
+        private function hydrateAlerts(array|object $alertData) : array
+        {
+            $data = [];
+
+            if (is_array($alertData))
+                foreach ($alertData as $alert)
+                    $data[] = new WeatherAlertFeatureCollection($alert);
+
+            else
+                $data[] = new  WeatherAlertFeatureCollection($alertData);
+
+            return $data;
         }
     }

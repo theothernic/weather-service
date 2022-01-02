@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:bearlovescode/common.git",
-                "reference": "bc6befb826f4e59010b0de54af2943fe4dffb4ee"
+                "reference": "aba0a802830d3ee4275d7f16324fa807b05432fc"
             },
             "require": {
                 "guzzlehttp/guzzle": "^7.4",
@@ -35,7 +35,7 @@
                     "email": "code@bearlovescode.com"
                 }
             ],
-            "time": "2021-11-23T01:39:10+00:00"
+            "time": "2022-01-01T20:38:36+00:00"
         },
         {
             "name": "doctrine/inflector",
