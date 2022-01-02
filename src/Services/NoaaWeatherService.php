@@ -52,7 +52,7 @@
 
         public function getForecastForCoords(Point $coords) : NoaaForecast
         {
-            $forecast = json_decode($this->client->getForecastForCoords($coords));
+            $forecast = $this->client->getForecastForCoords($coords);
             return new NoaaForecast($forecast->properties);
         }
 
