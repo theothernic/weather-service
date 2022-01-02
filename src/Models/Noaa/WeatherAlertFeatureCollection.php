@@ -8,29 +8,30 @@
     {
         public function __construct(mixed $data = null)
         {
+            $this->_vars['alerts'] = [];
+
             $this->using(['title', 'features']);
             parent::__construct($data);
         }
 
         public function hydrate(mixed $data = null): void
         {
-            $this->features = $this->hydrateAlerts($data->features);
+            $this->hydrateAlerts($data->features);
             unset($data->features);
 
             parent::hydrate($data);
         }
-
-
-        private function hydrateAlerts(array $alerts = []) : array
+        private function hydrateAlerts(array $alerts = []) : void
         {
-            $data = [];
-
             if (!empty($alerts))
                 foreach ($alerts as $alert)
                 {
-                    $data[] = new WeatherAlert($alert);
+                    $this->_vars['alerts'][] = new WeatherAlert($alert->properties); // skipping the 'feature' data layer/
                 }
+        }
 
-            return $data;
+        public function getAlerts() : array|null
+        {
+            return $this->_vars['alerts'] ?? null;
         }
     }
