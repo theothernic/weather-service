@@ -41,7 +41,7 @@
          * @throws \GuzzleHttp\Exception\GuzzleException
          * @throws \Theothernic\WeatherService\Exceptions\WeatherClientException
          */
-        public function getActiveAlerts(string $area = null) : array|null
+        public function getActiveAlerts(string $area = null) : WeatherAlertCollection|array|null
         {
             if (empty($area))
                 return null;
