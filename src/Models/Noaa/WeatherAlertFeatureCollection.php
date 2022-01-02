@@ -14,8 +14,8 @@
 
         public function hydrate(mixed $data = null): void
         {
-            $this->features = $this->hydrateAlerts($data['features']);
-            unset($data['features']);
+            $this->features = $this->hydrateAlerts($data->features);
+            unset($data->features);
 
             parent::hydrate($data);
         }
