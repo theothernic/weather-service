@@ -8,6 +8,7 @@
     {
         public function __construct(mixed $data = null)
         {
+            // make sure that the alerts property is initialized.
             $this->_vars['alerts'] = [];
 
             $this->using(['title', 'features']);
@@ -16,6 +17,7 @@
 
         public function hydrate(mixed $data = null): void
         {
+            // convert "features" into alerts.
             $this->hydrateAlerts($data->features);
             unset($data->features);
 
@@ -25,9 +27,7 @@
         {
             if (!empty($alerts))
                 foreach ($alerts as $alert)
-                {
-                    $this->_vars['alerts'][] = new WeatherAlert($alert->properties); // skipping the 'feature' data layer/
-                }
+                    $this->_vars['alerts'][] = new WeatherAlert($alert->properties); // stripping/skipping the 'feature' data layer
         }
 
         public function getAlerts() : array|null

@@ -44,22 +44,25 @@
             if (empty($area))
                 return null;
 
-            $alertList = [];
             $alertData = json_decode($this->client->getActiveAlerts($area));
-            return $this->hydrateAlerts($alertData);
+            return $this->prepareAlerts($alertData);
         }
 
 
-        private function hydrateAlerts(array|object $alertData) : array
+        /**
+         * @param array|object $alertData
+         * @return WeatherAlertCollection|array|null
+         */
+        private function prepareAlerts(array|object $alertData) : WeatherAlertCollection|array|null
         {
-            $data = [];
+            $data = null;
 
             if (is_array($alertData))
                 foreach ($alertData as $alert)
                     $data[] = new WeatherAlertCollection($alert);
 
             else
-                $data[] = new  WeatherAlertCollection($alertData);
+                $data = new WeatherAlertCollection($alertData);
 
             return $data;
         }
