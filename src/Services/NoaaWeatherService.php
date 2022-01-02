@@ -8,7 +8,7 @@
     use Theothernic\WeatherService\Clients\WeatherClient;
     use Theothernic\WeatherService\Models\Configuration\WeatherConfiguration;
     use Theothernic\WeatherService\Models\Noaa\WeatherAlert;
-    use Theothernic\WeatherService\Models\Noaa\WeatherAlertFeatureCollection;
+    use Theothernic\WeatherService\Models\Noaa\WeatherAlertCollection;
 
     class NoaaWeatherService
     {
@@ -56,10 +56,10 @@
 
             if (is_array($alertData))
                 foreach ($alertData as $alert)
-                    $data[] = new WeatherAlertFeatureCollection($alert);
+                    $data[] = new WeatherAlertCollection($alert);
 
             else
-                $data[] = new  WeatherAlertFeatureCollection($alertData);
+                $data[] = new  WeatherAlertCollection($alertData);
 
             return $data;
         }

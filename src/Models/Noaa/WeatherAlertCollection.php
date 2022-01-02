@@ -4,7 +4,7 @@
 
     use Bearlovescode\Common\Models\Model;
 
-    class WeatherAlertFeatureCollection extends Model
+    class WeatherAlertCollection extends Model
     {
         public function __construct(mixed $data = null)
         {
