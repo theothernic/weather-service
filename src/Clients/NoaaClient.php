@@ -41,7 +41,7 @@
 
             $req = new Request('GET', $uri);
             $resp = $this->go($req);
-            $data = $resp->getBody()->getContents();
+            $data = json_decode($resp->getBody()->getContents());
 
             if (!$resp->getStatusCode() == 200)
                 throw new WeatherClientException($data, $resp->getStatusCode());
@@ -57,7 +57,7 @@
          */
         public function getForecastForCoords(Point $coords): object|null
         {
-            $metadata = json_decode($this->getPointInfo($coords));
+            $metadata = $this->getPointInfo($coords));
 
             if ($metadata)
             {
