@@ -2,13 +2,9 @@
     namespace Theothernic\WeatherService\Services;
 
     use Bearlovescode\Common\Models\IConfiguration;
-    use Bearlovescode\Common\Models\Model;
     use Bearlovescode\Common\Traits\Configuration\UsesConfiguration;
     use Theothernic\WeatherService\Clients\NoaaClient;
-    use Theothernic\WeatherService\Clients\WeatherClient;
-    use Theothernic\WeatherService\Models\Configuration\WeatherConfiguration;
     use Theothernic\WeatherService\Models\Noaa\NoaaForecast;
-    use Theothernic\WeatherService\Models\Noaa\WeatherAlert;
     use Theothernic\WeatherService\Models\Noaa\WeatherAlertCollection;
     use Theothernic\WeatherService\Models\Point;
 
